@@ -1,0 +1,49 @@
+/* App.css - Custom styles for Aesthetics for Pediatric App */
+
+.App {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom focus styles */
+input:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 640px) {
+  .App {
+    font-size: 14px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .fixed {
+    display: none !important;
+  }
+}
