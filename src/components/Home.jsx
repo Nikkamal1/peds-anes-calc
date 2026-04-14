@@ -94,68 +94,62 @@ const Home = ({ onCalculate, onClearResults, hasResults }) => {
 
   // ฟังก์ชันคำนวณที่เน้นน้ำหนักและอายุ
   const calculatePediatricDoses = (weight, age) => {
-    // การคำนวณขนาดยาสำหรับเด็กตามน้ำหนักและอายุ
-    const calculations = {
-      // Maintenance Fluid (4-2-1 rule)
-      fluidRequirements: {
-        hourly: weight <= 10 ? (weight * 4).toFixed(1) : 
-                weight <= 20 ? (40 + (weight - 10) * 2).toFixed(1) : 
-                (60 + (weight - 20) * 1).toFixed(1),
-        daily: weight <= 10 ? (weight * 4 * 24).toFixed(1) : 
-               weight <= 20 ? ((40 + (weight - 10) * 2) * 24).toFixed(1) : 
-               ((60 + (weight - 20) * 1) * 24).toFixed(1)
-      },
-      
-      // Anesthesia Doses (mg/kg)
-      anesthesiaDoses: {
-        propofol: (weight * 2.5).toFixed(1),
-        fentanyl: (weight * 0.001).toFixed(3),
-        midazolam: (weight * 0.05).toFixed(2),
-        ketamine: (weight * 1).toFixed(1),
-        thiopental: age <= 12 ? (weight * 5).toFixed(1) : (weight * 4).toFixed(1)
-      },
-      
-      // Muscle Relaxants (mg/kg)
-      muscleRelaxants: {
-        succinylcholine: (weight * 1.5).toFixed(1),
-        rocuronium: (weight * 0.6).toFixed(1),
-        vecuronium: (weight * 0.08).toFixed(2)
-      },
-      
-      // Pain Control (mg/kg)
-      painControl: {
-        morphine: (weight * 0.1).toFixed(2),
-        tramadol: (weight * 1).toFixed(1),
-        paracetamol: (weight * 15).toFixed(0)
-      },
-      
-      // Reversal Agents (mg/kg)
-      reversalAgents: {
-        neostigmine: (weight * 0.05).toFixed(2),
-        atropine: (weight * 0.01).toFixed(2),
-        naloxone: (weight * 0.01).toFixed(3)
-      },
-      
-      // Equipment Sizes
-      equipment: {
-        endotrachealTube: age <= 1 ? '3.0-3.5' : 
-                         age <= 2 ? '3.5-4.0' : 
-                         age <= 4 ? '4.0-4.5' : 
-                         age <= 6 ? '4.5-5.0' : 
-                         age <= 8 ? '5.0-5.5' : 
-                         age <= 10 ? '5.5-6.0' : 
-                         age <= 12 ? '6.0-6.5' : '6.5-7.0',
-        laryngealMask: age <= 1 ? '1' : 
-                      age <= 2 ? '1.5' : 
-                      age <= 4 ? '2' : 
-                      age <= 6 ? '2.5' : 
-                      age <= 8 ? '3' : 
-                      age <= 10 ? '3.5' : '4'
-      }
-    };
-    
-    return calculations;
+  const calculations = {
+    fluidRequirements: {
+      hourly: weight <= 10 ? (weight * 4).toFixed(2) : 
+              weight <= 20 ? (40 + (weight - 10) * 2).toFixed(2) : 
+              (60 + (weight - 20) * 1).toFixed(2),
+      daily: weight <= 10 ? (weight * 4 * 24).toFixed(2) : 
+             weight <= 20 ? ((40 + (weight - 10) * 2) * 24).toFixed(2) : 
+             ((60 + (weight - 20) * 1) * 24).toFixed(2)
+    },
+
+    anesthesiaDoses: {
+      propofol: (weight * 2.5).toFixed(2),
+      fentanyl: (weight * 0.001).toFixed(2),
+      midazolam: (weight * 0.05).toFixed(2),
+      ketamine: (weight * 1).toFixed(2),
+      thiopental: age <= 12 ? (weight * 5).toFixed(2) : (weight * 4).toFixed(2)
+    },
+
+    muscleRelaxants: {
+      succinylcholine: (weight * 1.5).toFixed(2),
+      rocuronium: (weight * 0.6).toFixed(2),
+      vecuronium: (weight * 0.08).toFixed(2)
+    },
+
+    painControl: {
+      morphine: (weight * 0.1).toFixed(2),
+      tramadol: (weight * 1).toFixed(2),
+      paracetamol: (weight * 15).toFixed(2)
+    },
+
+    reversalAgents: {
+      neostigmine: (weight * 0.05).toFixed(2),
+      atropine: (weight * 0.01).toFixed(2),
+      naloxone: (weight * 0.01).toFixed(2)
+    },
+
+    equipment: {
+      endotrachealTube: age <= 1 ? '3.0-3.5' : 
+                       age <= 2 ? '3.5-4.0' : 
+                       age <= 4 ? '4.0-4.5' : 
+                       age <= 6 ? '4.5-5.0' : 
+                       age <= 8 ? '5.0-5.5' : 
+                       age <= 10 ? '5.5-6.0' : 
+                       age <= 12 ? '6.0-6.5' : '6.5-7.0',
+      laryngealMask: age <= 1 ? '1' : 
+                    age <= 2 ? '1.5' : 
+                    age <= 4 ? '2' : 
+                    age <= 6 ? '2.5' : 
+                    age <= 8 ? '3' : 
+                    age <= 10 ? '3.5' : '4'
+    }
   };
+
+  return calculations;
+};
+    
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4 pb-24 relative overflow-hidden">
