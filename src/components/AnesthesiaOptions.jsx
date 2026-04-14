@@ -29,87 +29,89 @@ const AnesthesiaOptions = ({ result, calculations }) => {
   const getOptionDetails = () => {
     const weight = parseFloat(result.weight) || 0;
     const age = parseFloat(result.age) || 0;
-
+    const formatDose = (num) => {
+  return Number.isInteger(num) ? num.toString() : num.toFixed(2);
+};
     return {
       induction: [
         {
           name: 'Thiopental',
           formula: '5-6 mg/kg (age 1-12 year)',
-          result: age >= 1 && age <= 12 ? `${5 * weight}-${6 * weight} mg` : 'ไม่แนะนำสำหรับอายุนี้',
+          result: age >= 1 && age <= 12 ? `${formatDose(5 * weight)}-${formatDose(6 * weight)} mg` : 'ไม่แนะนำสำหรับอายุนี้',
         },
         {
           name: 'Propofol',
           formula: '2.5-3.5 mg/kg (age more than 3 year)',
-          result: age > 3 ? `${2.5 * weight}-${3.5 * weight} mg` : 'ไม่แนะนำสำหรับอายุนี้',
+          result: age > 3 ? `${formatDose(2.5 * weight)}-${formatDose(3.5 * weight)} mg` : 'ไม่แนะนำสำหรับอายุนี้',
         },
         {
           name: 'Ketamine',
           formula: '1-2 mg/kg',
-          result: `${1 * weight}-${2 * weight} mg`,
+          result: `${formatDose(1 * weight)}-${formatDose(2 * weight)} mg`,
           formula2: 'Sedation 0.5-2 mg/kg',
-          result2: `${0.5 * weight}-${2 * weight} mg`,
+          result2: `${formatDose(0.5 * weight)}-${formatDose(2 * weight)} mg`,
         },
         {
           name: 'Etomidate',
           formula: '0.2-0.6 mg/kg',
-          result: `${0.2 * weight}-${0.6 * weight} mg`,
+          result: `${formatDose(0.2 * weight)}-${formatDose(0.6 * weight)} mg`,
         },
         {
           name: 'Midazolam',
           formula:'0.05-0.1 mg/kg (max 6mg) age 6 mounts to 5 year',
-          result: age >= 6 && age <= 5 ? `${0.05 * weight}-${0.1 * weight} mg` : 'ไม่แนะนำสำหรับอายุนี้',
+          result: age >= 6 && age <= 5 ? `${formatDose(0.05 * weight)}-${formatDose(0.1 * weight)} mg` : 'ไม่แนะนำสำหรับอายุนี้',
           formula2:'0.025-0.05 mg/kg (max 10 mg) age 5 to 12 year',
-          result2: age >= 5 && age <= 12 ? `${0.025 * weight}-${0.05 * weight} mg` : 'ไม่แนะนำสำหรับอายุนี้',
+          result2: age >= 5 && age <= 12 ? `${formatDose(0.025 * weight)}-${formatDose(0.05 * weight)} mg` : 'ไม่แนะนำสำหรับอายุนี้',
         },
       ],
       muscleRelaxation: [
         {
           name: 'Succinylcholine',
           formula: '1-2 mg/kg',
-          result: `${1 * weight}-${2 * weight} mg`,
+          result: `${formatDose(1 * weight)}-${formatDose(2 * weight)} mg`,
         },
         {
           name: 'Atracurium',
           formula: '0.5-0.6 mg/kg',
-          result: `${0.5 * weight}-${0.6 * weight} mg`,
+          result: `${formatDose(0.5 * weight)}-${formatDose(0.6 * weight)} mg`,
           formula2: 'Maintenance. 0.2-0.3 mg/kg',
-          result2: `${0.2 * weight}-${0.3 * weight} mg`,
+          result2: `${formatDose(0.2 * weight)}-${formatDose(0.3 * weight)} mg`,
         },
         {
           name: 'Cisatracurium',
           formula: '0.1-0.2 mg/kg',
-          result: `${0.1 * weight}-${0.2 * weight} mg`,
+          result: `${formatDose(0.1 * weight)}-${formatDose(0.2 * weight)} mg`,
           formula2: 'Maintenance. 0.02-0.05 mg/kg',
-          result2: `${0.02 * weight}-${0.05 * weight} mg`,
+          result2: `${formatDose(0.02 * weight)}-${formatDose(0.05 * weight)} mg`,
         },
         {
           name: 'Rocuronium',
           formula: '0.6-1.2 mg/kg',
-          result: `${0.6 * weight}-${1.2 * weight} mg`,
+          result: `${formatDose(0.6 * weight)}-${formatDose(1.2 * weight)} mg`,
           formula2: 'Maintenance. 0.1-0.15 mg/kg',
-          result2: `${0.1 * weight}-${0.15 * weight} mg`,
+          result2: `${formatDose(0.1 * weight)}-${formatDose(0.15 * weight)} mg`,
         },
       ],
       painControl: [
         {
           name: 'Morphine',
           formula: '0.05-0.1 mg/kg',
-          result: `${0.05 * weight}-${0.1 * weight} mg`,
+          result: `${formatDose(0.05 * weight)}-${formatDose(0.1 * weight)} mg`,
         },
         {
           name: 'Pethidine',
           formula: '0.5-1 mg/kg',
-          result: `${0.5 * weight}-${1 * weight} mg`,
+          result: `${formatDose(0.5 * weight)}-${formatDose(1 * weight)} mg`,
         },
         {
           name: 'Fentanyl',
           formula: '1-2 mcg/kg',
-          result: `${1 * weight}-${2 * weight} mcg`,
+          result: `${formatDose(1 * weight)}-${formatDose(2 * weight)} mcg`,
         },
         {
           name: 'Acetaminophen',
           formula: '10-15 mg/kg',
-          result: `${10 * weight}-${15 * weight} mg`,
+          result: `${formatDose(10 * weight)}-${formatDose(15 * weight)} mg`,
         },
       ],
       inhalation: [
@@ -137,12 +139,12 @@ const AnesthesiaOptions = ({ result, calculations }) => {
             {
               name: 'Neostigmine',
               formula: '0.05-0.07 mg/kg',
-              result: `${0.05 * weight}-${0.07 * weight} mg`,
+              result: `${formatDose(0.05 * weight)}-${formatDose(0.07 * weight)} mg`,
             },
             {
               name: 'Edrophonium',
               formula: '1 mg/kg',
-              result: `${1 * weight} mg`,
+              result: `${formatDose(1 * weight)} mg`,
             },
           ],
         },
@@ -152,12 +154,12 @@ const AnesthesiaOptions = ({ result, calculations }) => {
             {
               name: 'Atropine',
               formula: '0.01-0.02 mg/kg',
-              result: `${0.01 * weight}-${0.02 * weight} mg`,
+              result: `${formatDose(0.01 * weight)}-${formatDose(0.02 * weight)} mg`,
             },
             {
               name: 'Glycopyrrolate',
               formula: '0.005-0.01 mg/kg',
-              result: `${0.005 * weight}-${0.01 * weight} mg`,
+              result: `${formatDose(0.005 * weight)}-${formatDose(0.01 * weight)} mg`,
             },
             
           ],
@@ -207,12 +209,12 @@ const AnesthesiaOptions = ({ result, calculations }) => {
         {
           name: 'Dexamethasone',
           formula: '0.1- 0.15 mg/kg',
-          result: `${0.1 * weight}-${0.15 * weight} mg`,
+          result: `${formatDose(0.1 * weight)}-${formatDose(0.15 * weight)} mg`,
         },
         {
           name: 'Metoclopramide',
           formula: '0.2 mg/kg',
-          result: `${0.2 * weight} mg`,
+          result: `${formatDose(0.2 * weight)} mg`,
         },
       ],
     };
