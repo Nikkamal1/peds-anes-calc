@@ -121,16 +121,23 @@ function App() {
     }
   }
 
-  return (
-    <div className="App">
+return (
+  <div className="flex flex-col min-h-screen">
+    
+    {/* content */}
+    <div className="flex-1">
       {renderCurrentView()}
-       <Footer/>  {/* 👈 ใส่ตรงนี้ */}
-      <BottomNavigationBar
-        activeTab={activeTab === 'results' && results.length > 0 ? 'home' : activeTab}
-        onTabChange={handleTabChange}
-      />
-      
     </div>
+
+    <Footer />
+
+    <BottomNavigationBar
+      activeTab={activeTab === 'results' && results.length > 0 ? 'home' : activeTab}
+      onTabChange={handleTabChange}
+    />
+    
+  </div>
+
   )
 }
 
