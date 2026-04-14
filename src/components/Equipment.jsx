@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from './Footer';
 
 const Equipment = ({ result }) => {
   const [selectedCuff, setSelectedCuff] = useState(null);
@@ -535,6 +536,7 @@ const Equipment = ({ result }) => {
         </div>
       </div>
     </div>
+    
   );
 };
 

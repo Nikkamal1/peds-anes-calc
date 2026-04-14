@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import BottomNavigationBar from './components/BottomNavigationBar'
@@ -5,7 +6,7 @@ import Home from './components/Home'
 import ResultDetail from './components/ResultDetail'
 import Equipment from './components/Equipment'
 import VitalSign from './components/VitalSign'
-
+import Footer from './components/Footer'
 function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [results, setResults] = useState([])
@@ -62,7 +63,7 @@ function App() {
 
   const renderCurrentView = () => {
     // ถ้ามีผลการคำนวณและอยู่ที่หน้า home หรือ results ให้แสดง ResultDetail
-    if (results.length > 0 && (activeTab === 'home' || activeTab === 'results' || selectedResultIndex !== null)) {
+    if (results.length > 0 && (activeTab === 'results' || selectedResultIndex !== null)) {
       const indexToShow = selectedResultIndex !== null ? selectedResultIndex : 0
       return (
         <ResultDetail
@@ -123,10 +124,12 @@ function App() {
   return (
     <div className="App">
       {renderCurrentView()}
+       <Footer/>  {/* 👈 ใส่ตรงนี้ */}
       <BottomNavigationBar
         activeTab={activeTab === 'results' && results.length > 0 ? 'home' : activeTab}
         onTabChange={handleTabChange}
       />
+      
     </div>
   )
 }
